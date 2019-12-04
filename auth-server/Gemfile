@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'rack-cors'
 gem 'pg'
+gem "erdil-auth", path: "./../erdil-auth/"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

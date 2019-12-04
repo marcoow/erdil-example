@@ -5,32 +5,21 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: postgresql
+  adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: erdil-auth
-  password: erdil-auth
 
 development:
-  primary:
-    <<: *default
-    database: erdil-auth-dev
-  auth:
-    adapter: postgresql
-    database: erdil-auth-dev
-    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-    timeout: 5000
-    username: erdil-auth
-    password: erdil-auth
-    migrations_paths: db/auth_migrations
+  <<: *default
+  database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: erdil-auth-test
+  database: db/test.sqlite3
 
 production:
   <<: *default
-  database: erdil-auth
+  database: db/production.sqlite3
