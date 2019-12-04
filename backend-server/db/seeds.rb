@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Post.create(title: 'This is Rails', body: 'Hello from the Backend server.')
+Post.create(title: 'This is Ember.js', body: 'I am here as well.')

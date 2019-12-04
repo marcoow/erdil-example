@@ -4,7 +4,7 @@ class SampleController < ApplicationController
     token = request.headers['Authorization'].match(/Bearer (.*)/)[1]
     Auth.identify!(token)
 
-    render json: { some: 'data' }
+    render json: Post.all
   rescue Auth::AuthError
     head 401
   end

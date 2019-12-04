@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'rack-cors'
 gem 'httparty'
+gem 'pg'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
