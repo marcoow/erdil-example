@@ -1,5 +1,5 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
-
-{{outlet}}
+{{#if session.isAuthenticated}}
+  <button onclick={{action "logout"}}>Logout</button>
+{{else}}
+  <button onclick={{action "login"}}>Login</button>
+{{/if}}
