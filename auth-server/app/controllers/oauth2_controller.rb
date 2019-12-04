@@ -11,6 +11,14 @@ class Oauth2Controller < ApplicationController
     end
   end
 
+  def validate
+    if params[:token] == 'secrefdfsdft!'
+      head 200
+    else
+      head 401
+    end
+  end
+
   private
 
     def authenticate_with_credentials(identification, password)

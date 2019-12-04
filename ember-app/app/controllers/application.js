@@ -19,8 +19,12 @@ export default Controller.extend({
           Authorization: `Bearer ${this.session.data.authenticated.access_token}`
         }
       });
-      let data = await response.text();
-      this.set('data', data);
+      if (response.status === 401) {
+        this.session.invalidate();
+      } else {
+        let data = await response.text();
+        this.set('data', data);
+      }
     }
   }
 });
