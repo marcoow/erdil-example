@@ -11,6 +11,16 @@ export default Controller.extend({
 
     logout() {
       this.session.invalidate();
+    },
+
+    async load() {
+      let response = await fetch('http://localhost:3001/sample-data', {
+        headers: {
+          Authorization: `Bearer ${this.session.data.authenticated.access_token}`
+        }
+      });
+      let data = await response.text();
+      this.set('data', data);
     }
   }
 });
