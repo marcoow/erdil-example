@@ -4,6 +4,6 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(ApplicationRouteMixin, AuthenticatedRouteMixin, {
   triggerAuthentication() {
-    window.location.replace('http://localhost:4201?redirect=http://localhost:4200');
+    window.location.replace(`http://localhost:4201?redirect=${window.location}`);
   }
 });
