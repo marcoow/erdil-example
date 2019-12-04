@@ -4,27 +4,16 @@ import { inject } from '@ember/service';
 export default Controller.extend({
   session: inject(),
 
+  queryParams: ['redirect'],
+
   actions: {
-    login() {
-      this.session.authenticate('authenticator:oauth2', 'username', 'password');
+    async login() {
+      await this.session.authenticate('authenticator:oauth2', 'username', 'password');
+      window.location.replace(this.redirect);
     },
 
     logout() {
       this.session.invalidate();
     },
-
-    async load() {
-      let response = await fetch('http://localhost:3001/sample-data', {
-        headers: {
-          Authorization: `Bearer ${this.session.data.authenticated.access_token}`
-        }
-      });
-      if (response.status === 401) {
-        this.session.invalidate();
-      } else {
-        let data = await response.text();
-        this.set('data', data);
-      }
-    }
   }
 });

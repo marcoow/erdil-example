@@ -12,17 +12,18 @@ class Oauth2Controller < ApplicationController
   end
 
   def validate
-    if params[:token] == 'secrefdfsdft!'
-      head 200
-    else
-      head 401
-    end
+    head 200
+    #if params[:token] == 'secret!'
+    #  head 200
+    #else
+    #  head 401
+    #end
   end
 
   private
 
     def authenticate_with_credentials(identification, password)
-      render json: { access_token: 'secret!' }
+      render json: { access_token: SecureRandom.hex(16) }
       #login = Login.where(identification: identification).first || LoginNotFound.new
       #
       #if login.authenticate(password)
