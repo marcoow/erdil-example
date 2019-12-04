@@ -10,18 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_141208) do
+ActiveRecord::Schema.define(version: 2019_12_04_135630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.string "body"
+  create_table "identities", force: :cascade do |t|
+    t.string "token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "identity_id"
   end
 
   create_table "spatial_ref_sys", primary_key: "srid", id: :integer, default: nil, force: :cascade do |t|

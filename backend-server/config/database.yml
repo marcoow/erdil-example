@@ -12,8 +12,17 @@ default: &default
   password: erdil-backend
 
 development:
-  <<: *default
-  database: erdil-backend-dev
+  primary:
+    <<: *default
+    database: erdil-backend-dev
+  auth:
+    adapter: postgresql
+    database: erdil-auth-dev
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    timeout: 5000
+    username: erdil-auth
+    password: erdil-auth
+    migrations_paths: db/auth_migrations
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

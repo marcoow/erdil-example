@@ -4,9 +4,11 @@ module Auth
   class AuthError < StandardError; end
 
   def self.identify!(token)
-    response = HTTParty.post('http://localhost:3000/validate', { body: { token: token } })
+    identity = Identity.where(token: token).first
 
-    unless response.code === 200
+    if identity
+      identity
+    else
       throw AuthError.new
     end
   end
