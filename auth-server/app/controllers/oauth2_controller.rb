@@ -12,18 +12,19 @@ class Oauth2Controller < ApplicationController
   end
 
   def validate
-    head 200
-    #if params[:token] == 'secret!'
-    #  head 200
-    #else
-    #  head 401
-    #end
+    identity = Identity.where(token: params[:token]).first
+
+    if identity
+      head 200
+    else
+      head 401
+    end
   end
 
   private
 
     def authenticate_with_credentials(identification, password)
-      render json: { access_token: SecureRandom.hex(16) }
+      render json: { access_token: Identity.first.token }
       #login = Login.where(identification: identification).first || LoginNotFound.new
       #
       #if login.authenticate(password)
